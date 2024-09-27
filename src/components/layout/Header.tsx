@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router';
 
-import Logo from '@/assets/example.svg';
 import { WalletSelector } from '@/components/shared';
 import {
   NavigationMenu,
@@ -49,7 +48,7 @@ export const Header = () => {
     {
       name: 'Buy With Down Payment',
       path: PATH.DOWNPAYMENT_BUY,
-      key: 'downpayment',
+      key: 'downPayment',
     },
     {
       name: 'Auction',
@@ -110,48 +109,58 @@ export const Header = () => {
   ListItem.displayName = 'ListItem';
 
   return (
-    <header className="fixed z-50 flex h-20 w-full flex-row items-center justify-between bg-transparent p-8">
-      <div className="flex items-center justify-between gap-4">
-        <img src={Logo} alt="Logo" className="size-16 rounded-full" />
-        <span className="text-3xl font-bold text-[#A66AFE]/90">Megaloandon</span>
-      </div>
-      <NavigationMenu className="[&_.absolute]:translate-x-[7.75rem]">
-        <NavigationMenuList className="flex gap-4">
-          {MenuItems.map((item) => {
-            return (
-              <NavigationMenuItem key={item.key}>
-                <NavigationMenuTrigger
-                  className="bg-transparent py-6 hover:bg-white/5 focus:bg-transparent [&_.lucide-chevron-down]:hidden"
-                  onClick={() => {
-                    navigate(item.path);
-                  }}
-                >
-                  <NavigationMenuLink
-                    className={cn('text-xl text-white/80', isActive(item.path) && 'text-[#A66AFE]')}
+    <header className="fixed z-50 flex h-20 w-full flex-row items-center justify-between bg-transparent bg-[url('/bg.png')] p-8  px-32">
+      <a className="flex items-center justify-start gap-4" href="/">
+        <img
+          src="/icons/megaloandon-logo.png"
+          alt="logo-megaloan"
+          className="size-16 rounded-full"
+        />
+
+        <h1 className="text-3xl font-bold text-[#A66AFE]/90">Megaloandon</h1>
+      </a>
+      <div className="flex items-center justify-end gap-4">
+        <NavigationMenu className="[&_.absolute]:translate-x-[9.75rem]">
+          <NavigationMenuList className="flex gap-4">
+            {MenuItems.map((item) => {
+              return (
+                <NavigationMenuItem key={item.key}>
+                  <NavigationMenuTrigger
+                    className="bg-transparent py-6 hover:bg-white/5 focus:bg-transparent [&_.lucide-chevron-down]:hidden"
+                    onClick={() => {
+                      navigate(item.path);
+                    }}
                   >
-                    {item.name}
-                  </NavigationMenuLink>
-                </NavigationMenuTrigger>
-                {item.children && (
-                  <NavigationMenuContent className="flex w-full items-center">
-                    <ul className="flex min-w-32 flex-col gap-2 bg-[#2E2733] p-3">
-                      {item.children.map((child, index) => (
-                        <>
-                          {index !== 0 && (
-                            <Separator orientation="horizontal" className="bg-white" />
-                          )}
-                          <ListItem key={child.key} title={child.name} href={child.path} />
-                        </>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                )}
-              </NavigationMenuItem>
-            );
-          })}
-        </NavigationMenuList>
-      </NavigationMenu>
-      <WalletSelector />
+                    <NavigationMenuLink
+                      className={cn(
+                        'text-xl text-white/80',
+                        isActive(item.path) && 'text-[#A66AFE]'
+                      )}
+                    >
+                      {item.name}
+                    </NavigationMenuLink>
+                  </NavigationMenuTrigger>
+                  {item.children && (
+                    <NavigationMenuContent className="flex w-full items-center">
+                      <ul className="flex min-w-32 flex-col gap-3 bg-[#2E2733] p-3">
+                        {item.children.map((child, index) => (
+                          <>
+                            {index !== 0 && (
+                              <Separator orientation="horizontal" className="bg-white" />
+                            )}
+                            <ListItem key={child.key} title={child.name} href={child.path} />
+                          </>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  )}
+                </NavigationMenuItem>
+              );
+            })}
+          </NavigationMenuList>
+        </NavigationMenu>
+        <WalletSelector />
+      </div>
     </header>
   );
 };

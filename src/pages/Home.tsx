@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { CoinIcon } from '@/components/icons/coin';
 
 const HomePage = () => {
-  const [selectedTab, setSelectedTab] = useState('1');
+  const [selectedTab, setSelectedTab] = useState('3');
   return (
     <div className="w-full bg-[url('/bg.png')] bg-cover bg-center p-32 text-lg">
       <div className="grid grid-cols-4 gap-12">

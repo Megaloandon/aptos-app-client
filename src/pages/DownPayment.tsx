@@ -4,7 +4,7 @@ import { CoinIcon } from '@/components/icons/coin';
 
 const DownPaymentPage = () => {
   const [selectedMarket, setSelectedMarket] = useState('0');
-  const [selectedStep, setSelectedStep] = useState('3');
+  const [selectedStep, setSelectedStep] = useState('1');
 
   return (
     <div className="h-screen w-full bg-[url('/bg.png')] bg-cover bg-center p-32 text-lg">
