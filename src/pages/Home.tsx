@@ -182,6 +182,7 @@ const HomePage = () => {
             </p>
           </div>
           <div className="col-span-2"></div>
+          <div className="col-span-2"></div>
           <div className="col-span-3"></div>
           <div className="col-span-2 rounded-lg border border-primary bg-card p-12 shadow-[0px_0px_5px_5px_rgba(0.3,0.3,0.3,0.3)] shadow-primary">
             <p className="text-xl text-white">
