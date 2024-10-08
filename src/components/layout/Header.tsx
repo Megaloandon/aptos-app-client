@@ -110,7 +110,7 @@ export const Header = () => {
 
   return (
     <header className="fixed z-50 flex h-20 w-full flex-row items-center justify-between bg-transparent bg-[url('/bg.png')] p-8  px-16">
-      <a className="flex items-center justify-start gap-4" href="/">
+      <a className="flex items-center justify-start gap-0" href="/">
         <img
           src="/icons/megaloandon-logo.png"
           alt="logo-megaloan"
@@ -121,7 +121,7 @@ export const Header = () => {
       </a>
       <div className="flex items-center justify-end gap-4">
         <NavigationMenu className="[&_.absolute]:translate-x-[9.75rem]">
-          <NavigationMenuList className="flex gap-4">
+          <NavigationMenuList className="flex gap-0">
             {MenuItems.map((item) => {
               return (
                 <NavigationMenuItem key={item.key}>

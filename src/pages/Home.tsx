@@ -1,9 +1,14 @@
+import { useNavigate } from 'react-router';
+
 import { CoinIcon } from '@/components/icons/coin';
 import { SolutionIcon } from '@/components/icons/solutionIcon';
+import { PATH } from '@/constants';
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="w-full bg-[url('/bg.png')] bg-cover bg-center px-32 pt-20 text-lg">
+    <div className="w-full bg-[url('/bg.png')] bg-repeat px-32 pt-20 text-lg">
       <div className="pb-20">
         <div className="grid grid-cols-5 items-center gap-8 ">
           <div className="col-span-3 text-white">
@@ -66,18 +71,18 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="py-24 text-xl text-white">
-        <h3 className="text-center text-5xl font-bold text-white">Why Megaloandon?</h3>
-        <p className="py-4 text-center text-2xl">
+      <div className="py-24 text-2xl text-white">
+        <h3 className="text-center text-[64px] font-bold text-white">Why Megaloandon?</h3>
+        <p className="mt-4 py-4 text-center text-2xl">
           You <span className="text-secondary">need to APT</span> but
-          <span className="text-primary">do not want to sell</span> your blue-chip NFTs
+          <span className="text-primary"> don&#39;t want to sell</span> your blue-chip NFTs
         </p>
 
         <div className="px-24 py-12">
-          <h4 className="text-center text-3xl font-bold text-primary">Problems</h4>
-          <div className="mt-8 grid grid-cols-3 gap-12">
+          <h4 className="text-center text-[48px] font-bold text-primary">Problems</h4>
+          <div className="mt-12 grid grid-cols-3 gap-12">
             <div className="col-span-1">
-              <p className="mb-2 font-bold">Il liquidity</p>
+              <p className="mb-2 font-bold">Illiquidity</p>
               <p className="font-light">
                 NFTs lack inherent liquidity, making it difficult to unlock their value.
               </p>
@@ -100,24 +105,14 @@ const HomePage = () => {
 
         <div className="px-24 py-12">
           <div className="relative">
-            <h4 className="mt-1 text-center text-3xl font-bold text-secondary">Solution</h4>
-            <div className="absolute right-0 top-0 mr-[42%] mt-[-10px] size-8">
+            <h4 className="mt-1 text-center text-[48px] font-bold text-secondary">Solution</h4>
+            <div className="absolute right-0 top-0 mr-[41%] mt-[-20px] size-10">
               <SolutionIcon />
             </div>
           </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-24 px-40">
-            <div className="col-span-1">
-              <img src="/bg/solution-1.png" alt="solution-1" className="size-full" />
-            </div>
-            <div className="col-span-1">
-              <img src="/bg/solution-2.png" alt="solution-2" className="size-full" />
-            </div>
-            <div className="col-span-2">
-              <div className="mx-auto flex w-1/2 items-center justify-center px-6">
-                <img src="/bg/solution-3.png" alt="solution-3" className="size-full" />
-              </div>
-            </div>
+          <div className="mt-8 w-full px-40">
+            <img src="/bg/solutions.png" alt="solution-1" className="size-full" />
           </div>
         </div>
 
@@ -135,7 +130,12 @@ const HomePage = () => {
                 holders can get up to 60% of the NFT value without needing to wait for a sale
                 Listing now
               </p>
-              <button className="rounded-full bg-secondary px-6 py-2 font-semibold text-black">
+              <button
+                onClick={() => {
+                  navigate(PATH.LENDING);
+                }}
+                className="rounded-full bg-secondary px-6 py-2 font-semibold text-black"
+              >
                 Listing now
               </button>
             </div>
@@ -147,12 +147,17 @@ const HomePage = () => {
                 Purchase blue-chip NFT by paying just 40% of NFT price integrated with multiple
                 marketplaces Buy now
               </p>
-              <button className="rounded-full bg-primary px-6 py-2 font-semibold text-black">
+              <button
+                onClick={() => {
+                  navigate(PATH.DOWNPAYMENT_BUY);
+                }}
+                className="rounded-full bg-primary px-6 py-2 font-semibold text-black"
+              >
                 Buy now
               </button>
             </div>
             <div className="col-span-1">
-              <h5 className="text-2xl font-bold text-secondary">SPLINE_CLIPBOARD</h5>
+              <h5 className="text-2xl font-bold text-secondary">Flash Claim</h5>
               <p className="py-4">
                 Megaloandon supports both targeted and random airdrops, with its distribution
                 process entirely randomized for fairness integrated Aptos on-chain randomness
@@ -182,7 +187,6 @@ const HomePage = () => {
             </p>
           </div>
           <div className="col-span-2"></div>
-          <div className="col-span-2"></div>
           <div className="col-span-3"></div>
           <div className="col-span-2 rounded-lg border border-primary bg-card p-12 shadow-[0px_0px_5px_5px_rgba(0.3,0.3,0.3,0.3)] shadow-primary">
             <p className="text-xl text-white">
@@ -191,7 +195,7 @@ const HomePage = () => {
             </p>
           </div>
         </div>
-        <div className="absolute right-1/4 top-0 mt-[100px] w-1/3">
+        <div className="absolute right-1/4 top-0 mt-[80px] w-1/3">
           <img src="/icons/vision.png" alt="vision" className="size-full" />
         </div>
       </div>

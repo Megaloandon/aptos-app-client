@@ -5,25 +5,25 @@ const AuctionPage = () => {
     <div className="w-full bg-[url('/bg.png')] bg-cover bg-center p-32 text-lg">
       <h1 className="text-left text-[38px] font-semibold text-white">Available to Auction</h1>
       <div className="mt-20  grid grid-cols-4 gap-12">
-        <div className="col-span-1">
-          <div className="rounded-xl bg-card">
+        <div className="col-span-1 flex justify-center">
+          <div className="max-w-64 rounded-xl  border border-solid border-[#D9D9D9] bg-card">
             <div>
               <img src="/images/token_tmp.png" alt="token" className="size-full rounded-t-xl" />
             </div>
             <div className="px-4 pb-2">
               <h3 className="my-2 text-center text-lg font-bold text-white">Aptos Monkey #12</h3>
-              <div className="flex items-center justify-between text-base">
+              <div className="flex items-center justify-between text-base text-white/80">
                 <div className="text-left">
                   <p>Current Debt</p>
                   <div className="flex items-center gap-1">
-                    <span className="text-start font-bold text-white">2.3</span>
+                    <span className="text-start font-bold">2.3</span>
                     <img src="/APT.png" alt="APT" className="size-4 rounded-full" />
                   </div>
                 </div>
                 <div className="text-right">
                   <p>First Bid Bonus</p>
                   <div className="flex items-center justify-end gap-1">
-                    <span className="text-start font-bold text-white">4</span>
+                    <span className="text-start font-bold">4</span>
                     <img src="/APT.png" alt="APT" className="size-4 rounded-full" />
                   </div>
                 </div>
@@ -34,25 +34,25 @@ const AuctionPage = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-1">
-          <div className="rounded-xl bg-card">
+        <div className="col-span-1 flex justify-center">
+          <div className="max-w-64 rounded-xl  border border-solid border-[#D9D9D9] bg-card">
             <div>
               <img src="/images/token_tmp.png" alt="token" className="size-full rounded-t-xl" />
             </div>
             <div className="px-4 pb-2">
               <h3 className="my-2 text-center text-lg font-bold text-white">Aptos Monkey #12</h3>
-              <div className="flex items-center justify-between text-base">
+              <div className="flex items-center justify-between text-base text-white/80">
                 <div className="text-left">
                   <p>Current Debt</p>
                   <div className="flex items-center gap-1">
-                    <span className="text-start font-bold text-white">2.3</span>
+                    <span className="text-start font-bold">2.3</span>
                     <img src="/APT.png" alt="APT" className="size-4 rounded-full" />
                   </div>
                 </div>
                 <div className="text-right">
                   <p>First Bid Bonus</p>
                   <div className="flex items-center justify-end gap-1">
-                    <span className="text-start font-bold text-white">4</span>
+                    <span className="text-start font-bold">4</span>
                     <img src="/APT.png" alt="APT" className="size-4 rounded-full" />
                   </div>
                 </div>
@@ -63,25 +63,25 @@ const AuctionPage = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-1">
-          <div className="rounded-xl bg-card">
+        <div className="col-span-1 flex justify-center">
+          <div className="max-w-64 rounded-xl  border border-solid border-[#D9D9D9] bg-card">
             <div>
               <img src="/images/token_tmp.png" alt="token" className="size-full rounded-t-xl" />
             </div>
             <div className="px-4 pb-2">
               <h3 className="my-2 text-center text-lg font-bold text-white">Aptos Monkey #12</h3>
-              <div className="flex items-center justify-between text-base">
+              <div className="flex items-center justify-between text-base text-white/80">
                 <div className="text-left">
                   <p>Current Debt</p>
                   <div className="flex items-center gap-1">
-                    <span className="text-start font-bold text-white">2.3</span>
+                    <span className="text-start font-bold">2.3</span>
                     <img src="/APT.png" alt="APT" className="size-4 rounded-full" />
                   </div>
                 </div>
                 <div className="text-right">
                   <p>First Bid Bonus</p>
                   <div className="flex items-center justify-end gap-1">
-                    <span className="text-start font-bold text-white">4</span>
+                    <span className="text-start font-bold">4</span>
                     <img src="/APT.png" alt="APT" className="size-4 rounded-full" />
                   </div>
                 </div>
@@ -92,25 +92,25 @@ const AuctionPage = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-1">
-          <div className="rounded-xl bg-card">
+        <div className="col-span-1 flex justify-center">
+          <div className="max-w-64 rounded-xl  border border-solid border-[#D9D9D9] bg-card">
             <div>
               <img src="/images/token_tmp.png" alt="token" className="size-full rounded-t-xl" />
             </div>
             <div className="px-4 pb-2">
               <h3 className="my-2 text-center text-lg font-bold text-white">Aptos Monkey #12</h3>
-              <div className="flex items-center justify-between text-base">
+              <div className="flex items-center justify-between text-base text-white/80">
                 <div className="text-left">
                   <p>Current Debt</p>
                   <div className="flex items-center gap-1">
-                    <span className="text-start font-bold text-white">2.3</span>
+                    <span className="text-start font-bold">2.3</span>
                     <img src="/APT.png" alt="APT" className="size-4 rounded-full" />
                   </div>
                 </div>
                 <div className="text-right">
                   <p>First Bid Bonus</p>
                   <div className="flex items-center justify-end gap-1">
-                    <span className="text-start font-bold text-white">4</span>
+                    <span className="text-start font-bold">4</span>
                     <img src="/APT.png" alt="APT" className="size-4 rounded-full" />
                   </div>
                 </div>

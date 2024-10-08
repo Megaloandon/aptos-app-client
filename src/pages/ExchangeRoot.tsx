@@ -10,7 +10,7 @@ const ExchangeRootPage = () => {
     navigate(PATH.EXCHANGE.BUY);
   }, [navigate]);
 
-  return <div>Loading...</div>;
+  return <div></div>;
 };
 
 export default ExchangeRootPage;

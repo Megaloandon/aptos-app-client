@@ -53,7 +53,13 @@ const DownPaymentPage = () => {
           </div>
         </div>
 
-        <div className="mt-8 flex items-center justify-center">
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <button
+            className="rounded-lg bg-gray-300 px-8 py-2 font-bold text-black "
+            onClick={() => setSelectedStep('1')}
+          >
+            cancel
+          </button>
           <button
             className="rounded-lg bg-secondary px-8 py-2 font-bold text-black "
             onClick={() => setSelectedStep('2')}
@@ -85,7 +91,13 @@ const DownPaymentPage = () => {
           </div>
         </div>
 
-        <div className="mt-12 flex items-center justify-center">
+        <div className="mt-12 flex items-center justify-center gap-4">
+          <button
+            className="rounded-lg bg-gray-300 px-8 py-2 font-bold text-black "
+            onClick={() => setSelectedStep('1')}
+          >
+            cancel
+          </button>
           <button
             className="rounded-lg bg-secondary px-8 py-2 font-bold text-black "
             onClick={() => setSelectedStep('3')}
@@ -121,7 +133,13 @@ const DownPaymentPage = () => {
           </div>
         </div>
 
-        <div className="mt-12 flex items-center justify-center">
+        <div className="mt-12 flex items-center justify-center gap-4">
+          <button
+            className="rounded-lg bg-gray-300 px-8 py-2 font-bold text-black "
+            onClick={() => setSelectedStep('2')}
+          >
+            cancel
+          </button>
           <button
             className="rounded-lg bg-secondary px-8 py-2 font-bold text-black "
             onClick={() => setSelectedStep('1')}
