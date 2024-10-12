@@ -18,7 +18,7 @@ const NullPage = lazy(() => import('@/pages/Null'));
 
 const AppLayout = () => {
   return (
-    <div className="flex h-screen w-full flex-col">
+    <div className="flex w-full flex-col">
       <Header />
       <Suspense fallback={<LoadingPage />}>
         <Outlet />

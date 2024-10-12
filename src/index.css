@@ -1,4 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Prototype';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('/src/assets/fonts/prototype/Prototype.ttf') format('truetype');
+}
+
+html {
+  font-family: 'Prototype', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+
 
 .html::-webkit-scrollbar,
 body::-webkit-scrollbar {
@@ -8,14 +25,9 @@ body::-webkit-scrollbar {
 .body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  scrollbar-width: 0;
   -ms-overflow-style: none;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer base {
   :root {

@@ -81,7 +81,7 @@ export const Header = () => {
     ({ className, title, children, href, ...props }, ref) => {
       return (
         <li className="bg-[#2E2733]">
-          <NavigationMenuLink asChild>
+          <NavigationMenuLink>
             <a
               ref={ref}
               className={cn(
@@ -117,11 +117,11 @@ export const Header = () => {
           className="size-16 rounded-full"
         />
 
-        <h1 className="text-3xl font-bold text-[#A66AFE]/90">Megaloandon</h1>
+        <h1 className="text-4xl font-bold tracking-wider text-primary">Megaloandon</h1>
       </a>
       <div className="flex items-center justify-end gap-4">
-        <NavigationMenu className="[&_.absolute]:translate-x-[9.75rem]">
-          <NavigationMenuList className="flex gap-0">
+        <NavigationMenu>
+          <NavigationMenuList>
             {MenuItems.map((item) => {
               return (
                 <NavigationMenuItem key={item.key}>
