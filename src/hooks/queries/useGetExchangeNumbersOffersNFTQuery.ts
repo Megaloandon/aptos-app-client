@@ -12,7 +12,7 @@ export const useGetExchangeNumbersOffersNFTQuery = () => {
       const { data: response } = await client.post(
         '/view',
         {
-          function: CONTRACT_VIEWS.EX_GET_NUMBERS_OFFERS_NFT,
+          function: CONTRACT_VIEWS.EX_GET_NUMBERS_OFFER_NFT,
           type_arguments: [],
           arguments: [],
         },

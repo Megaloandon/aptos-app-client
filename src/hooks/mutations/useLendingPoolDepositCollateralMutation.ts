@@ -33,7 +33,7 @@ export const useLendingPoolDepositCollateralMutation = () => {
         functionArguments: [collectionName, toU64(tokenId)],
       };
 
-      const { data: response } = await signAndSubmitTransaction({
+      const response = await signAndSubmitTransaction({
         sender: account.address,
         data: payload,
       });

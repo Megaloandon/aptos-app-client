@@ -4,32 +4,37 @@ import { getApiClient } from '@/apis';
 import { CONTRACT_VIEWS, QUERY_KEYS } from '@/constants';
 
 interface IGetExchangeOfferNFTProps {
-  index: string;
+  indexes: string[];
 }
 
 export const useGetExchangeOfferNFTQuery = (props: IGetExchangeOfferNFTProps) => {
-  const { index } = props;
+  const { indexes } = props;
 
   return useQuery({
-    queryKey: [QUERY_KEYS.EX_GET_OFFER_NFT],
+    queryKey: [QUERY_KEYS.EX_GET_OFFER_NFT, indexes],
     queryFn: async () => {
       const client = getApiClient();
 
-      const { data: response } = await client.post(
-        '/view',
-        {
-          function: CONTRACT_VIEWS.EX_GET_OFFER_NFT,
-          type_arguments: [],
-          arguments: [index],
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const responses = await Promise.all(
+        indexes.map(async (index) => {
+          const { data: response } = await client.post(
+            '/view',
+            {
+              function: CONTRACT_VIEWS.EX_GET_OFFER_NFT,
+              type_arguments: [],
+              arguments: [index],
+            },
+            {
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            }
+          );
 
-      return response;
+          return response;
+        })
+      );
+      return responses;
     },
   });
 };

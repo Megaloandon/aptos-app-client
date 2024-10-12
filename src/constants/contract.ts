@@ -1,7 +1,7 @@
 export const CONTRACT_ADDRESS =
-  '0x4b6e221646feeff6eb0fdb9e62e716a60e0e28eee5c35310f4b886c5e4911dd2';
+  '0xe56bfd96c130be460bc962aca4c27e8e57e889a358ae713d86439ca531eabdb5';
 
-export const ORACLE_ADDRESS = '0xd1c95344a35f6331685a0537fe31d3b63f96c9bf89b08cd9fdd9b7fd30b3a819';
+export const ORACLE_ADDRESS = '0xd37904ac357ea266e2c30cae3b6559f9d1222909f9b5781b0eaf1e1acd952e96';
 
 export const CONTRACT_FUNCTIONS: Record<string, `${string}::${string}::${string}`> = {
   DA_CREATE_COLLECTION: `${CONTRACT_ADDRESS}::digital_asset::create_collection`,
@@ -61,7 +61,7 @@ export const CONTRACT_VIEWS: Record<string, `${string}::${string}::${string}`> =
   EX_GET_NFT_PRICE: `${CONTRACT_ADDRESS}::exchange::get_nft_price`,
   EX_GET_NUMBER_OFFERS: `${CONTRACT_ADDRESS}::exchange::get_number_offers`,
   EX_GET_NUMBERS_INSTANTLY_NFT: `${CONTRACT_ADDRESS}::exchange::get_numbers_instantly_nft`,
-  EX_GET_NUMBERS_OFFERS_NFT: `${CONTRACT_ADDRESS}::exchange::get_numbers_offers_nft`,
+  EX_GET_NUMBERS_OFFER_NFT: `${CONTRACT_ADDRESS}::exchange::get_numbers_offer_nft`,
   EX_GET_OFFER: `${CONTRACT_ADDRESS}::exchange::get_offer`,
   EX_GET_OFFER_NFT: `${CONTRACT_ADDRESS}::exchange::get_offer_nft`,
   LP_GET_ALL_USER_DEPOSIT: `${CONTRACT_ADDRESS}::lending_pool::get_all_user_deposit`,

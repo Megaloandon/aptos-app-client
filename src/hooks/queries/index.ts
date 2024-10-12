@@ -10,6 +10,7 @@ export * from './useGetEnglishAuctionMinimumBidQuery';
 export * from './useGetEnglishAuctionNFTToAuctionQuery';
 export * from './useGetEnglishAuctionNumbersNFTToAuctionQuery';
 export * from './useGetExchangeAllInstantlyNFTQuery';
+export * from './useGetExchangeAllOfferNFTQuery';
 export * from './useGetExchangeInstantlyNFTQuery';
 export * from './useGetExchangeNFTPriceQuery';
 export * from './useGetExchangeNumberOffersQuery';

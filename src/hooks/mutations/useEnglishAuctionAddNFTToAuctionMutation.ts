@@ -40,13 +40,13 @@ export const useEnglishAuctionAddNFTToAuctionMutation = () => {
         ],
       };
 
-      const { data: response } = await signAndSubmitTransaction({
+      const response = await signAndSubmitTransaction({
         sender: account.address,
         data: payload,
       });
 
       try {
-        aptosClient.waitForTransaction(response.hash);
+        await aptosClient.waitForTransaction({ transactionHash: response.hash });
         toast({
           title: 'Success',
           description: 'Transaction submitted',

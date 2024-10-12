@@ -28,10 +28,11 @@ export const ListInstantlyModal = NiceModal.create((props: ListInstantlyModalPro
 
   const listInstantlyNFTMutation = useExchangeListInstantlyNFTMutation();
 
-  const listNFT = () => {
-    listInstantlyNFTMutation.mutate({
+  const listNFT = async () => {
+    await listInstantlyNFTMutation.mutateAsync({
       collectionName,
       tokenId,
+      closeModal,
     });
   };
 
@@ -40,11 +41,11 @@ export const ListInstantlyModal = NiceModal.create((props: ListInstantlyModalPro
       <Dialog open onOpenChange={closeModal}>
         <DialogContent className="flex min-w-[720px] flex-col gap-6">
           <DialogTitle className="text-center text-3xl font-semibold">
-            <span className="text-[#A66AFE]">Full </span>
-            <span className="text-white">Payment</span>
+            <span className="text-[#A66AFE]">Sell </span>
+            <span className="text-white">Instantly</span>
           </DialogTitle>
           <div className="flex w-full items-start justify-between gap-16 px-3 pb-3">
-            <img src={tokenUri} alt="Token" className="size-64 flex-none rounded-md" />
+            <img src={tokenUri} alt="Token" className="size-64 flex-none rounded-md object-cover" />
 
             <div className="flex flex-none flex-col items-start justify-start gap-4">
               <span className="text-start text-3xl font-bold">{tokenName}</span>

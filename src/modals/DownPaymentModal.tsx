@@ -28,23 +28,24 @@ export const DownPaymentModal = NiceModal.create((props: DownPaymentModalProps) 
 
   const buyWithDownPaymentMutation = useExchangeBuyWithDownPaymentMutation();
 
-  const buyNFT = () => {
-    buyWithDownPaymentMutation.mutate({
+  const buyNFT = async () => {
+    await buyWithDownPaymentMutation.mutateAsync({
       collectionName,
       tokenId,
+      closeModal,
     });
   };
 
   return (
     <div className="flex w-[600px]">
       <Dialog open onOpenChange={closeModal}>
-        <DialogContent className="flex min-w-[600px] flex-col gap-6">
+        <DialogContent className="flex min-w-[720px] flex-col gap-6">
           <DialogTitle className="text-center text-3xl font-semibold">
             <span className="text-[#A66AFE]">Down </span>
             <span className="text-white">Payment</span>
           </DialogTitle>
           <div className="flex w-full items-start justify-start gap-20 px-3 pb-3">
-            <img src={tokenUri} alt="Token" className="size-56 flex-none rounded-md" />
+            <img src={tokenUri} alt="Token" className="size-56 flex-none rounded-md object-cover" />
 
             <div className="flex flex-none flex-col items-start justify-start gap-6">
               <span className="text-start text-3xl font-bold">{tokenName}</span>

@@ -21,13 +21,13 @@ interface BuyingInstantlyNFTCardProps {
 export const BuyingInstantlyNFTCard = (props: BuyingInstantlyNFTCardProps) => {
   const { tokenName, tokenId, tokenUri, collectionName, ownerAddress, className } = props;
 
-  const { data: downPaymentPrice = 3 } = useGetOracleDownPaymentPriceQuery({
+  const { data: downPaymentPrice = 1.4 } = useGetOracleDownPaymentPriceQuery({
     ownerAddress,
     collectionName,
     tokenId,
   });
 
-  const { data: fullPaymentPrice = 7.5 } = useGetOracleFullPaymentPriceQuery({
+  const { data: fullPaymentPrice = 3.5 } = useGetOracleFullPaymentPriceQuery({
     ownerAddress,
     collectionName,
     tokenId,
@@ -85,11 +85,14 @@ export const BuyingInstantlyNFTCard = (props: BuyingInstantlyNFTCardProps) => {
               NiceModal.show(FullPaymentModal, {
                 onClose: () => {
                   // eslint-disable-next-line no-console
-                  console.log('DownPaymentModal closed');
+                  console.log('FullPaymentModal closed');
                 },
                 tokenUri,
                 tokenName,
                 tokenId,
+                collectionName,
+                ownerAddress,
+                fullPaymentPrice,
               });
             }}
             className="mt-4 h-fit w-full rounded-lg border-2 border-solid border-[#D1F608] bg-[#D1F608]/80 p-2 hover:bg-[#D1F608]/60 focus:bg-[#D1F608]/60"

@@ -19,6 +19,7 @@ export const QUERY_KEYS = {
   EX_GET_OFFER: 'getOffer',
   EX_GET_OFFER_NFT: 'getOfferNFT',
   EX_GET_ALL_INSTANTLY_NFT: 'getAllInstantlyNFT',
+  EX_GET_ALL_OFFER_NFT: 'getAllOfferNFT',
   LP_GET_ALL_USER_DEPOSIT: 'getAllUserDeposit',
   LP_GET_BORROWER_INFORMATION: 'getBorrowerInformation',
   LP_GET_COLLATERAL: 'getCollateral',

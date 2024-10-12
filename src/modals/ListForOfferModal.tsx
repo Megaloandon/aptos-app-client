@@ -27,29 +27,34 @@ export const ListForOfferModal = NiceModal.create((props: ListForOfferModalProps
 
   const listOfferNFTMutation = useExchangeListOfferNFTMutation();
 
-  const listNFT = () => {
-    listOfferNFTMutation.mutate({
+  const listNFT = async () => {
+    await listOfferNFTMutation.mutateAsync({
       collectionName,
       tokenId,
     });
+    if (listOfferNFTMutation.isSuccess) {
+      closeModal();
+    }
   };
 
   return (
     <div className="flex w-[600px]">
       <Dialog open onOpenChange={closeModal}>
-        <DialogContent className="flex min-w-[600px] flex-col gap-6">
+        <DialogContent className="flex min-w-[720px] flex-col gap-6">
           <DialogTitle className="text-center text-3xl font-semibold">
-            <span className="text-[#A66AFE]">Full </span>
-            <span className="text-white">Payment</span>
+            <span className="text-[#A66AFE]">Listing</span>
           </DialogTitle>
-          <div className="flex w-full items-start justify-start gap-20 px-3 pb-3">
-            <img src={tokenUri} alt="Token" className="size-56 flex-none rounded-md" />
+          <div className="flex w-full items-start justify-between gap-16 px-3 pb-3">
+            <img src={tokenUri} alt="Token" className="size-56 flex-none rounded-md object-cover" />
 
-            <div className="flex flex-none flex-col items-start justify-start gap-6">
+            <div className="flex flex-none flex-col items-start justify-start gap-4">
               <span className="text-start text-3xl font-bold">{tokenName}</span>
 
               <div className="flex w-full flex-col items-center gap-2">
-                <span className="text-2xl font-light">Full Payment</span>
+                <span className="text-xl font-light">
+                  You have to wait for others
+                  <br /> to make offers
+                </span>
               </div>
 
               <Button

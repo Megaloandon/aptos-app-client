@@ -25,13 +25,13 @@ export const FullPaymentModal = NiceModal.create((props: FullPaymentModalProps) 
 
     onClose?.();
   };
-
   const buyWithFullPaymentMutation = useExchangeBuyWithFullPaymentMutation();
 
-  const buyNFT = () => {
-    buyWithFullPaymentMutation.mutate({
+  const buyNFT = async () => {
+    await buyWithFullPaymentMutation.mutateAsync({
       collectionName,
       tokenId,
+      closeModal,
     });
   };
 
@@ -43,8 +43,8 @@ export const FullPaymentModal = NiceModal.create((props: FullPaymentModalProps) 
             <span className="text-[#A66AFE]">Full </span>
             <span className="text-white">Payment</span>
           </DialogTitle>
-          <div className="flex w-full items-start justify-start gap-20 px-3 pb-3">
-            <img src={tokenUri} alt="Token" className="size-56 flex-none rounded-md" />
+          <div className="flex w-full items-start justify-between gap-20 px-5 pb-3">
+            <img src={tokenUri} alt="Token" className="size-56 flex-none rounded-md object-cover" />
 
             <div className="flex flex-none flex-col items-start justify-start gap-6">
               <span className="text-start text-3xl font-bold">{tokenName}</span>

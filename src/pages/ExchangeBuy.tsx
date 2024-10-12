@@ -2,15 +2,27 @@ import { useSearchParams } from 'react-router-dom';
 
 import { BuyingInstantlyNFTCard, OfferNFTCard, SkeletonCards } from '@/components/shared';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useGetExchangeAllInstantlyNFTQuery } from '@/hooks/queries';
+import {
+  useGetExchangeAllInstantlyNFTQuery,
+  useGetExchangeAllOfferNFTQuery,
+} from '@/hooks/queries';
 import { NFT } from '@/types';
+
+const dummyNFT: NFT = {
+  ownerAddress: 'dummy',
+  collectionName: 'dummy',
+  tokenId: 'dummy',
+  tokenUri: 'dummy',
+  tokenName: 'dummy',
+};
 
 const ExchangeBuyPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const view = searchParams.get('view') ?? 'buyNow';
 
-  const { data: BuyNowNFTList = [] } = useGetExchangeAllInstantlyNFTQuery();
-  const AllItemsNFTList: NFT[] = [];
+  const { data: BuyNowNFTList = [dummyNFT] } = useGetExchangeAllInstantlyNFTQuery();
+
+  const { data: AllItemsNFTList = [dummyNFT] } = useGetExchangeAllOfferNFTQuery();
 
   return (
     <div className="relative flex h-screen w-full flex-col overflow-hidden">
@@ -37,6 +49,7 @@ const ExchangeBuyPage = () => {
             <div className="grid grid-cols-4 gap-12">
               {view === 'buyNow' &&
                 BuyNowNFTList.length > 0 &&
+                BuyNowNFTList[0].ownerAddress !== 'dummy' &&
                 BuyNowNFTList.map((nft) => (
                   <BuyingInstantlyNFTCard
                     key={nft.tokenId + nft.collectionName}
@@ -48,14 +61,16 @@ const ExchangeBuyPage = () => {
                   />
                 ))}
 
-              {view === 'buyNow' && BuyNowNFTList.length === 0 && (
-                <SkeletonCards skeletonCount={4} />
-              )}
+              {view === 'buyNow' &&
+                BuyNowNFTList.length > 0 &&
+                BuyNowNFTList[0].ownerAddress === 'dummy' && <SkeletonCards skeletonCount={4} />}
             </div>
           </TabsContent>
           <TabsContent value="allItems">
             <div className="grid grid-cols-4 gap-12">
               {view === 'allItems' &&
+                AllItemsNFTList.length > 0 &&
+                AllItemsNFTList[0].ownerAddress !== 'dummy' &&
                 AllItemsNFTList.map((nft) => (
                   <OfferNFTCard
                     key={nft.collectionName + nft.tokenId}
@@ -65,6 +80,9 @@ const ExchangeBuyPage = () => {
                     tokenUri={nft.tokenUri}
                   />
                 ))}
+              {view === 'allItems' &&
+                AllItemsNFTList.length > 0 &&
+                AllItemsNFTList[0].ownerAddress === 'dummy' && <SkeletonCards skeletonCount={4} />}
             </div>
           </TabsContent>
         </Tabs>
