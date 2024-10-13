@@ -8,13 +8,15 @@ const DownPaymentPage = () => {
 
   return (
     <div className="h-screen w-full bg-[url('/bg.png')] bg-cover bg-center p-32 text-lg">
-      <h1 className="text-center text-[64px] font-semibold text-white ">Down Payment Buy</h1>
+      <h1 className="text-center font-prototype text-[64px] font-semibold text-white">
+        Down Payment Buy
+      </h1>
       <p className="mt-10 text-center text-3xl font-light">
         Buy NFT in <span className="font-semibold">top NFT marketplace</span> with
         <span className="font-semibold"> down payment</span>
       </p>
       <div className={selectedStep === '1' ? 'mt-12 block' : 'hidden'}>
-        <h3 className="text-center text-3xl font-semibold text-secondary">Select Market</h3>
+        <h3 className="text-center font-prototype text-3xl text-secondary">Select Market</h3>
 
         <div className="mt-12 grid grid-cols-2 items-center px-64">
           <div className="col-span-1 flex flex-col items-center justify-center gap-2 text-2xl">
@@ -58,7 +60,7 @@ const DownPaymentPage = () => {
             className="rounded-lg bg-gray-300 px-8 py-2 font-bold text-black "
             onClick={() => setSelectedStep('1')}
           >
-            cancel
+            Cancel
           </button>
           <button
             className="rounded-lg bg-secondary px-8 py-2 font-bold text-black "
@@ -96,7 +98,7 @@ const DownPaymentPage = () => {
             className="rounded-lg bg-gray-300 px-8 py-2 font-bold text-black "
             onClick={() => setSelectedStep('1')}
           >
-            cancel
+            Cancel
           </button>
           <button
             className="rounded-lg bg-secondary px-8 py-2 font-bold text-black "
@@ -138,7 +140,7 @@ const DownPaymentPage = () => {
             className="rounded-lg bg-gray-300 px-8 py-2 font-bold text-black "
             onClick={() => setSelectedStep('2')}
           >
-            cancel
+            Cancel
           </button>
           <button
             className="rounded-lg bg-secondary px-8 py-2 font-bold text-black "

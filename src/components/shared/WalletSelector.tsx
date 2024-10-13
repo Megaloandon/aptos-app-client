@@ -92,7 +92,7 @@ export function WalletSelector(walletSortingOptions: WalletSortingOptions) {
   ) : (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
-        <Button className="min-w-48 max-w-48 rounded-2xl border-2 border-[#CFF500] bg-black bg-none px-8 py-2 text-lg text-[#CFF500] hover:text-white">
+        <Button className="horver:bg-secondary min-w-48 max-w-48 rounded-2xl border-2 border-[#CFF500] bg-black px-8 py-2 text-lg text-[#CFF500] hover:text-black">
           Connect a Wallet
         </Button>
       </DialogTrigger>

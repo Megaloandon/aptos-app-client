@@ -109,7 +109,7 @@ export const Header = () => {
   ListItem.displayName = 'ListItem';
 
   return (
-    <header className="fixed z-50 flex h-20 w-full flex-row items-center justify-between bg-transparent bg-[url('/bg.png')] p-8  px-16">
+    <header className="fixed z-50 flex h-20 w-full flex-row items-center justify-between bg-transparent bg-[url('/bg.png')] p-8  px-16 font-prototype">
       <a className="flex items-center justify-start gap-0" href="/">
         <img
           src="/icons/megaloandon-logo.png"

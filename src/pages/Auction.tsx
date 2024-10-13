@@ -3,7 +3,9 @@ import { CoinIcon } from '@/components/icons/coin';
 const AuctionPage = () => {
   return (
     <div className="w-full bg-[url('/bg.png')] bg-cover bg-center p-32 text-lg">
-      <h1 className="text-left text-[38px] font-semibold text-white">Available to Auction</h1>
+      <h1 className="text-left font-prototype text-[38px] tracking-wide text-white">
+        Available to Auction
+      </h1>
       <div className="mt-20  grid grid-cols-4 gap-12">
         <div className="col-span-1 flex justify-center">
           <div className="max-w-64 rounded-xl  border border-solid border-[#D9D9D9] bg-card">
