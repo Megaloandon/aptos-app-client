@@ -8,7 +8,7 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full bg-[url('/bg.png')] bg-center bg-repeat px-32 pt-32 text-lg">
+    <div className="w-full bg-[url('/bg.png')] bg-repeat px-32 pt-32 text-lg">
       <div className="">
         <div className="grid grid-cols-5 items-center">
           <div className="col-span-3 text-white">
@@ -18,7 +18,7 @@ const HomePage = () => {
             <h5 className="my-1 font-prototype text-[60px]  leading-[76px]">
               lending protocol in Aptos
             </h5>
-            <p className="mt-2 text-[32px] font-light">
+            <p className="mt-2 text-[28px] font-light">
               Effortless NFT Access, Infinite Opportunities
             </p>
           </div>
@@ -26,29 +26,29 @@ const HomePage = () => {
             <img src="/bg/bubble.png" className="size-full " alt="banner" />
           </div>
         </div>
-        <div className="mt-24 flex items-center justify-center gap-12 font-prototype text-3xl text-white">
-          <div className="flex flex-col items-center justify-center border-r-2 border-white pr-12">
-            <h3 className="">Total Value Locked</h3>
+        <div className="mt-24 flex items-center justify-center gap-12 text-3xl text-white ">
+          <div className="flex flex-col items-center justify-center border-r-2 border-white px-4  pr-12">
+            <h3 className="text-base">Total Value Locked</h3>
             <div className="mt-2 flex items-center justify-center gap-3">
-              <p className="font-bold text-secondary">1000</p>
+              <p className="font-prototype font-bold text-secondary">1000</p>
               <div className="size-8">
                 <CoinIcon />
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center border-r-2 border-white pr-12">
-            <h3 className="">Total Volume</h3>
+          <div className="flex flex-col items-center justify-center border-r-2 border-white px-4  pr-12">
+            <h3 className="text-base">Total Volume</h3>
             <div className="mt-2 flex items-center justify-center gap-3">
-              <p className="text-3xl font-bold text-secondary">1000</p>
+              <p className="font-prototype text-3xl font-bold text-secondary">1000</p>
               <div className="size-8">
                 <CoinIcon />
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center">
-            <h3 className="">Total Borrowed</h3>
+          <div className="flex flex-col items-center justify-center px-4">
+            <h3 className="text-base">Total Borrowed</h3>
             <div className="mt-2 flex items-center justify-center gap-3">
-              <p className="text-3xl font-bold text-secondary">1000</p>
+              <p className="font-prototype text-3xl font-bold text-secondary">1000</p>
               <div className="size-8">
                 <CoinIcon />
               </div>
@@ -126,9 +126,9 @@ const HomePage = () => {
         </div>
 
         <div className="px-24 py-12">
-          <div className="relative">
+          <div className="flex items-start justify-center">
             <h4 className="mt-1 text-center text-[48px] font-bold text-secondary">Solution</h4>
-            <div className="absolute right-0 top-0 mr-[39%] mt-[-20px] size-10">
+            <div className="ml-[-15px] mt-[-20px] size-10">
               <SolutionIcon />
             </div>
           </div>
@@ -156,7 +156,7 @@ const HomePage = () => {
               </p>
               <button
                 onClick={() => {
-                  navigate(PATH.LENDING);
+                  navigate(PATH.EXCHANGE.SELL);
                 }}
                 className="rounded-full bg-secondary px-6 py-2 font-semibold text-black"
               >
@@ -224,32 +224,14 @@ const HomePage = () => {
       </div>
 
       <div className="flex items-center justify-center">
-        <div className="relative max-w-screen-xl px-48 py-24">
-          <div className="grid grid-cols-5 gap-12">
-            <div className="col-span-3 rounded-lg border border-primary bg-card p-12 shadow-[0px_0px_5px_5px_rgba(0.3,0.3,0.3,0.3)] shadow-primary">
-              <p className="text-xl text-white">
-                To become the <span className="font-bold text-primary">leading platform</span> for
-                <span className="font-bold"> NFT-backed loans</span>
-              </p>
-            </div>
-            <div className="col-span-2"></div>
-            <div className="col-span-3"></div>
-            <div className="col-span-2 rounded-lg border border-primary bg-card p-12 shadow-[0px_0px_5px_5px_rgba(0.3,0.3,0.3,0.3)] shadow-primary">
-              <p className="text-xl text-white">
-                Unlock the <span className="font-bold text-primary">full potential </span> off
-                <span className="font-bold"> NFTs</span>
-              </p>
-            </div>
-          </div>
-          <div className="absolute right-1/4 top-0 mt-[80px] w-1/3">
-            <img src="/icons/vision.png" alt="vision" className="size-full" />
-          </div>
+        <div className="w-full px-32">
+          <img src="/bg/vision.png" alt="vision" className="size-full" />
         </div>
       </div>
 
-      <div className="px-40 py-12">
+      <div className="mt-12 px-48 py-12">
         <div>
-          <img src="/icons/roadmap.png" alt="roadmap" className="size-full" />
+          <img src="/bg/roadmap.png" alt="roadmap" className="size-full" />
         </div>
       </div>
     </div>
