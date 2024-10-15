@@ -4,6 +4,7 @@ export * from './useGetDigitalAssetOwnerDebtTokenQuery';
 export * from './useGetDigitalAssetOwnerTokenQuery';
 export * from './useGetDigitalAssetTokenDataQuery';
 export * from './useGetDigitalAssetTokensDataQuery';
+export * from './useGetEnglishAuctionAllNFTToAuctionQuery';
 export * from './useGetEnglishAuctionBidInformationQuery';
 export * from './useGetEnglishAuctionCheckIfFirstBidQuery';
 export * from './useGetEnglishAuctionMinimumBidQuery';

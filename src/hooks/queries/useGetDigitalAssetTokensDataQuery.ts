@@ -16,7 +16,7 @@ export const useGetDigitalAssetTokensDataQuery = (props: IGetTokenDataProps) => 
 
   return useQuery({
     queryKey: [
-      QUERY_KEYS.DA_GET_TOKEN_DATA,
+      QUERY_KEYS.DA_GET_TOKENS_DATA,
       tokenInfos?.map((tokenInfo) => tokenInfo.collectionName + tokenInfo.tokenId).join(','),
     ],
     queryFn: async () => {
@@ -24,7 +24,7 @@ export const useGetDigitalAssetTokensDataQuery = (props: IGetTokenDataProps) => 
         return [];
       }
       const client = getApiClient();
-      const responses = await Promise.all(
+      const responses = await Promise.allSettled(
         tokenInfos.map(async (tokenInfo) => {
           const { data: response } = await client.post(
             '/view',
@@ -63,7 +63,14 @@ export const useGetDigitalAssetTokensDataQuery = (props: IGetTokenDataProps) => 
           } satisfies NFT;
         })
       );
-      return responses;
+      const fulfilledResponses = responses.map((response) => {
+        if (response.status === 'fulfilled') {
+          return response.value;
+        }
+        return null;
+      });
+
+      return fulfilledResponses.filter((response) => response !== null) as NFT[];
     },
   });
 };

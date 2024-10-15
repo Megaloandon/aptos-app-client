@@ -2,14 +2,33 @@ import { useState } from 'react';
 
 import { CoinIcon } from '@/components/icons/coin';
 import { Input } from '@/components/ui/input';
+import { useExchangeBuyWithDownPaymentMutation } from '@/hooks/mutations';
+import { useGetDigitalAssetTokenDataQuery } from '@/hooks/queries';
 import { cn } from '@/lib';
 
 const DownPaymentPage = () => {
   const [selectedMarket, setSelectedMarket] = useState<string>('Blue Move');
   const [selectedStep, setSelectedStep] = useState('1');
 
+  const [collectionName, setCollectionName] = useState<string>('');
+  const [tokenId, setTokenId] = useState<string>('');
+
+  const { data: tokenData } = useGetDigitalAssetTokenDataQuery({
+    collectionName,
+    tokenId,
+  });
+
+  const buyWithDownPaymentMutation = useExchangeBuyWithDownPaymentMutation();
+
+  const handleDownPayment = async () => {
+    await buyWithDownPaymentMutation.mutateAsync({
+      collectionName,
+      tokenId,
+    });
+  };
+
   return (
-    <div className="h-screen w-full bg-[url('/bg.png')] bg-cover bg-center p-32 text-lg">
+    <div className="min-h-screen w-full bg-[url('/bg.png')] bg-cover bg-center p-32 text-lg">
       <h1 className="text-center font-prototype text-[64px] font-semibold text-white">
         Down Payment Buy
       </h1>
@@ -80,27 +99,28 @@ const DownPaymentPage = () => {
 
         <div className="mt-12 items-center px-64">
           <div className="flex flex-col gap-8">
-            <div className="relative rounded-xl border bg-[#27272A] p-4 shadow-lg shadow-primary">
-              <div className="flex justify-end">
-                <button className="h-auto rounded-lg bg-primary px-6 py-2">
-                  Choose Collection
-                </button>
-              </div>
-            </div>
-            <div className="relative rounded-xl border bg-[#27272A] p-4 shadow-lg shadow-primary">
-              <div className="flex justify-end">
-                <button className="h-auto rounded-lg bg-primary px-6 py-2">Choose ID</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-12 items-center px-64">
-          <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-2">
-              <span className="text-xl font-semibold text-primary">Collection Name</span>
+              <span className="text-xl font-semibold text-secondary">Collection Name</span>
               <Input
-                className={cn('rounded-xl border bg-[#27272A] p-4 shadow-lg shadow-primary')}
+                value={collectionName}
+                onChange={(e) => {
+                  setCollectionName(e.target.value);
+                }}
+                className={cn(
+                  'rounded-xl border bg-[#27272A] p-8 shadow-lg shadow-primary text-2xl text-white'
+                )}
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="text-xl font-semibold text-secondary">Token ID</span>
+              <Input
+                value={tokenId}
+                onChange={(e) => {
+                  setTokenId(e.target.value);
+                }}
+                className={cn(
+                  'rounded-xl border bg-[#27272A] p-8 shadow-lg shadow-primary text-2xl text-white'
+                )}
               />
             </div>
           </div>
@@ -131,10 +151,14 @@ const DownPaymentPage = () => {
         <div className="mt-12 items-center px-64">
           <div className="flex items-start justify-center gap-12">
             <div className="size-48">
-              <img src="/images/avatar1.png" alt="avatar" className="size-full rounded" />
+              <img
+                src={tokenData?.tokenUri}
+                alt="avatar"
+                className="size-full rounded object-cover"
+              />
             </div>
             <div>
-              <p className="text-center font-semibold">Aptos Monkey #12</p>
+              <p className="text-center font-semibold">{tokenData?.tokenName}</p>
               <div className="mt-4">
                 <p className="text-center font-light">Down payment</p>
                 <div className="mt-2 flex items-center justify-center gap-3">
@@ -157,7 +181,7 @@ const DownPaymentPage = () => {
           </button>
           <button
             className="rounded-lg bg-secondary px-8 py-2 font-bold text-black "
-            onClick={() => setSelectedStep('1')}
+            onClick={handleDownPayment}
           >
             Continue
           </button>

@@ -12,7 +12,7 @@ export const useGetLendingPoolCollateralQuery = (props: IGetCollateralProps) => 
   const { ownerAddress, indexes } = props;
 
   return useQuery({
-    queryKey: [QUERY_KEYS.LP_GET_COLLATERAL, ownerAddress, indexes],
+    queryKey: [QUERY_KEYS.LP_GET_COLLATERAL, ownerAddress, indexes.join(',')],
     queryFn: async () => {
       const client = getApiClient();
 

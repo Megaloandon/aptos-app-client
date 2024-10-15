@@ -10,6 +10,7 @@ import {
   useLendingPoolBorrowMutation,
   useLendingPoolDepositCollateralMutation,
   useLendingPoolDepositMutation,
+  useLendingPoolRepayMutation,
   useLendingPoolWithdrawMutation,
 } from '@/hooks/mutations';
 import {
@@ -53,7 +54,7 @@ const LendingPage = () => {
     lenderAddress: account?.address || '',
   });
 
-  const [withdrawDepositAmount, setWithdrawDepositAmount] = useState<string>('0');
+  const [withdrawDepositAmount, setWithdrawDepositAmount] = useState<string>('');
   const [withDrawDepositSelector, setWithdrawDepositSelector] = useState<string>('deposit');
 
   const withdrawMutation = useLendingPoolWithdrawMutation();
@@ -121,13 +122,21 @@ const LendingPage = () => {
     await refetchAllData();
   };
 
-  const [borrowAmount, setBorrowAmount] = useState<string>('0');
-
+  const [borrowRepayAmount, setBorrowRepayAmount] = useState<string>('');
+  const [borrowRepaySelector, setBorrowRepaySelector] = useState<string>('borrow');
   const borrowMutation = useLendingPoolBorrowMutation();
+  const repayMutation = useLendingPoolRepayMutation();
 
   const handleBorrow = async () => {
     await borrowMutation.mutateAsync({
-      amount: tryParseInt(borrowAmount),
+      amount: tryParseInt(borrowRepayAmount),
+    });
+    await refetchAllData();
+  };
+
+  const handleRepay = async () => {
+    await repayMutation.mutateAsync({
+      amount: tryParseInt(borrowRepayAmount),
     });
     await refetchAllData();
   };
@@ -138,7 +147,10 @@ const LendingPage = () => {
         <div className="grid grid-cols-4 gap-8 font-prototype text-xl tracking-wider text-white ">
           <div className="col-span-1 h-full rounded-xl bg-[#2E2733] p-4">
             <div className="flex items-center justify-start gap-3">
-              <p className="text-3xl text-primary"> {fromDecimals(marketConfig.totalDeposit, 6)}</p>
+              <p className="text-3xl text-primary">
+                {' '}
+                {userBorrowInformation.totalCollateralAmount}
+              </p>
               <div className="size-8">
                 <CoinIcon />
               </div>
@@ -186,7 +198,9 @@ const LendingPage = () => {
         <div className="mt-4 flex items-center justify-end font-prototype tracking-widest">
           <p className="text-2xl text-white">
             Health Factor:{' '}
-            <span className="text-secondary">{userBorrowInformation.healthFactor ?? 8}</span>
+            <span className="text-secondary">
+              {fromDecimals(userBorrowInformation.healthFactor, 6)}
+            </span>
           </p>
         </div>
 
@@ -253,17 +267,6 @@ const LendingPage = () => {
 
               <div className="mt-8 flex items-center justify-start gap-8 font-prototype text-xl">
                 <button
-                  onClick={() => setWithdrawDepositSelector('withdraw')}
-                  className={cn(
-                    'rounded-full border-2 px-6 py-2',
-                    withDrawDepositSelector === 'withdraw'
-                      ? 'border-primary text-primary'
-                      : 'border-transparent text-white hover:text-primary'
-                  )}
-                >
-                  Withdraw
-                </button>
-                <button
                   onClick={() => setWithdrawDepositSelector('deposit')}
                   className={cn(
                     'rounded-full border-2 px-6 py-2',
@@ -273,6 +276,17 @@ const LendingPage = () => {
                   )}
                 >
                   Deposit
+                </button>
+                <button
+                  onClick={() => setWithdrawDepositSelector('withdraw')}
+                  className={cn(
+                    'rounded-full border-2 px-6 py-2',
+                    withDrawDepositSelector === 'withdraw'
+                      ? 'border-primary text-primary'
+                      : 'border-transparent text-white hover:text-primary'
+                  )}
+                >
+                  Withdraw
                 </button>
               </div>
               <APTInput
@@ -323,7 +337,7 @@ const LendingPage = () => {
                   <div className="flex items-center justify-start gap-2">
                     <p className="font-bold text-primary">
                       {' '}
-                      {userBorrowInformation.availableToBorrow}
+                      {fromDecimals(userBorrowInformation.availableToBorrow, 6)}
                     </p>
                     <div className="size-8">
                       <CoinIcon />
@@ -420,22 +434,54 @@ const LendingPage = () => {
                 </div>
               </div>
 
+              <div className="mt-8 flex items-center justify-start gap-8 font-prototype text-xl">
+                <button
+                  onClick={() => setBorrowRepaySelector('borrow')}
+                  className={cn(
+                    'rounded-full border-2 px-6 py-2',
+                    borrowRepaySelector === 'borrow'
+                      ? 'border-primary text-primary'
+                      : 'border-transparent text-white hover:text-primary'
+                  )}
+                >
+                  Borrow
+                </button>
+                <button
+                  onClick={() => setBorrowRepaySelector('repay')}
+                  className={cn(
+                    'rounded-full border-2 px-6 py-2',
+                    borrowRepaySelector === 'repay'
+                      ? 'border-secondary text-secondary'
+                      : 'border-transparent text-white hover:text-secondary'
+                  )}
+                >
+                  Repay
+                </button>
+              </div>
+
               <APTInput
                 className="mt-10"
-                value={borrowAmount}
+                value={borrowRepayAmount}
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onChange={(e: any) => {
-                  onValueChange(e, setBorrowAmount);
+                  onValueChange(e, setBorrowRepayAmount);
                 }}
               />
               <div className="mt-8 flex items-center justify-center">
                 <button
                   onClick={async () => {
-                    await handleBorrow();
+                    if (borrowRepaySelector === 'borrow') {
+                      await handleBorrow();
+                    } else {
+                      await handleRepay();
+                    }
                   }}
-                  className="rounded-lg bg-secondary px-8 py-2 font-bold text-black "
+                  className={cn(
+                    'rounded-lg  px-8 py-2 font-bold text-black',
+                    borrowRepaySelector === 'borrow' ? 'bg-primary' : 'bg-secondary'
+                  )}
                 >
-                  Borrow
+                  {borrowRepaySelector === 'borrow' ? 'Borrow' : 'Repay'}
                 </button>
               </div>
             </div>

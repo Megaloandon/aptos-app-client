@@ -15,6 +15,7 @@ export const useEnglishAuctionInitializeWithBidMutation = () => {
     collectionName: string;
     tokenId: string;
     bidAmount: number;
+    closeModal?: () => void;
   }
 
   return useMutation({
@@ -27,7 +28,7 @@ export const useEnglishAuctionInitializeWithBidMutation = () => {
         return;
       }
 
-      const { collectionName, tokenId, bidAmount } = props;
+      const { collectionName, tokenId, bidAmount, closeModal } = props;
 
       const payload: InputGenerateTransactionPayloadData = {
         function: CONTRACT_FUNCTIONS.EA_INITIALIZE_WITH_BID,
@@ -42,11 +43,13 @@ export const useEnglishAuctionInitializeWithBidMutation = () => {
 
       try {
         await aptosClient.waitForTransaction({ transactionHash: response.hash });
+        closeModal?.();
         toast({
           title: 'Success',
           description: 'Transaction submitted',
         });
       } catch (error) {
+        closeModal?.();
         toast({
           title: 'Error',
           description: 'Transaction failed',

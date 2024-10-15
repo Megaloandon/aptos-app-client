@@ -19,7 +19,7 @@ export const useGetDigitalAssetTokenDataQuery = (props: IGetTokenDataProps) => {
       const { data: response } = await client.post(
         '/view',
         {
-          function: CONTRACT_VIEWS.GET_TOKEN_DATA,
+          function: CONTRACT_VIEWS.DA_GET_TOKEN_DATA,
           type_arguments: [],
           arguments: [collectionName, tokenId],
         },
@@ -30,7 +30,11 @@ export const useGetDigitalAssetTokenDataQuery = (props: IGetTokenDataProps) => {
         }
       );
 
-      return response;
+      return {
+        tokenName: response[0],
+        tokenDescription: response[1],
+        tokenUri: response[2],
+      };
     },
   });
 };

@@ -11,7 +11,7 @@ export const useGetLendingPoolLenderInformationQuery = (props: IGetLenderInforma
   const { lenderAddress } = props;
 
   return useQuery({
-    queryKey: [QUERY_KEYS.LP_GET_LENDER_INFORMATION],
+    queryKey: [QUERY_KEYS.LP_GET_LENDER_INFORMATION, lenderAddress],
     queryFn: async () => {
       const client = getApiClient();
 

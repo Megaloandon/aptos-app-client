@@ -15,6 +15,7 @@ export const useEnglishAuctionPlaceBidMutation = () => {
     collectionName: string;
     tokenId: string;
     bidAmount: number;
+    closeModal?: () => void;
   }
 
   return useMutation({
@@ -27,7 +28,7 @@ export const useEnglishAuctionPlaceBidMutation = () => {
         return;
       }
 
-      const { collectionName, tokenId, bidAmount } = props;
+      const { collectionName, tokenId, bidAmount, closeModal } = props;
 
       const payload: InputGenerateTransactionPayloadData = {
         function: CONTRACT_FUNCTIONS.EA_PLACE_BID,
@@ -42,11 +43,13 @@ export const useEnglishAuctionPlaceBidMutation = () => {
 
       try {
         await aptosClient.waitForTransaction({ transactionHash: response.hash });
+        closeModal?.();
         toast({
           title: 'Success',
           description: 'Transaction submitted',
         });
       } catch (error) {
+        closeModal?.();
         toast({
           title: 'Error',
           description: 'Transaction failed',

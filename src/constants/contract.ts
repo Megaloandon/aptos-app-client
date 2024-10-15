@@ -56,7 +56,7 @@ export const CONTRACT_VIEWS: Record<string, `${string}::${string}::${string}`> =
   EA_GET_BID_INFORMATION: `${CONTRACT_ADDRESS}::english_auction::get_bid_information`,
   EA_GET_MINIMUM_BID: `${CONTRACT_ADDRESS}::english_auction::get_minimum_bid`,
   EA_GET_NFT_TO_AUCTION: `${CONTRACT_ADDRESS}::english_auction::get_nft_to_auction`,
-  EA_GET_NUMBER_NFT_TO_AUCTION: `${CONTRACT_ADDRESS}::english_auction::get_number_nft_to_auction`,
+  EA_GET_NUMBER_NFT_TO_AUCTION: `${CONTRACT_ADDRESS}::english_auction::get_numbers_nft_to_auction`,
   EX_GET_INSTANTLY_NFT: `${CONTRACT_ADDRESS}::exchange::get_instantly_nft`,
   EX_GET_NFT_PRICE: `${CONTRACT_ADDRESS}::exchange::get_nft_price`,
   EX_GET_NUMBER_OFFERS: `${CONTRACT_ADDRESS}::exchange::get_number_offers`,

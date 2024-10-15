@@ -4,32 +4,36 @@ import { getApiClient } from '@/apis';
 import { CONTRACT_VIEWS, QUERY_KEYS } from '@/constants';
 
 interface IGetNFTToAuctionProps {
-  index: string;
+  indexes: string[];
 }
 
 export const useGetEnglishAuctionNFTToAuctionQuery = (props: IGetNFTToAuctionProps) => {
-  const { index } = props;
+  const { indexes } = props;
 
   return useQuery({
-    queryKey: [QUERY_KEYS.EA_GET_NFT_TO_AUCTION, index],
+    queryKey: [QUERY_KEYS.EA_GET_NFT_TO_AUCTION, indexes.join(',')],
     queryFn: async () => {
       const client = getApiClient();
+      const responses = await Promise.all(
+        indexes.map(async (index) => {
+          const { data: response } = await client.post(
+            '/view',
+            {
+              function: CONTRACT_VIEWS.EA_GET_NFT_TO_AUCTION,
+              type_arguments: [],
+              arguments: [index],
+            },
+            {
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            }
+          );
 
-      const { data: response } = await client.post(
-        '/view',
-        {
-          function: CONTRACT_VIEWS.EA_GET_MINIMUM_BID,
-          type_arguments: [],
-          arguments: [index],
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
+          return response;
+        })
       );
-
-      return response;
+      return responses;
     },
   });
 };

@@ -13,17 +13,17 @@ export const useExchangeBuyWithDownPaymentMutation = () => {
 
   const queryClient = useQueryClient();
 
-  const refetchData = async (closeModal: () => void) => {
+  const refetchData = async (closeModal?: () => void) => {
     await queryClient.invalidateQueries({
       queryKey: [QUERY_KEYS.EX_GET_NUMBERS_INSTANTLY_NFT],
     });
-    closeModal();
+    closeModal?.();
   };
 
   interface IExchangeBuyWithDownPaymentMutation {
     collectionName: string;
     tokenId: string;
-    closeModal: () => void;
+    closeModal?: () => void;
   }
 
   return useMutation({
