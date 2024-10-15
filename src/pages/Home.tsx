@@ -10,19 +10,19 @@ const HomePage = () => {
   return (
     <div className="w-full bg-[url('/bg.png')] bg-repeat px-32 pt-32 text-lg">
       <div className="">
-        <div className="grid grid-cols-5 items-center">
-          <div className="col-span-3 text-white">
-            <h1 className="my-1 font-prototype text-[80px] font-semibold leading-[95px]">
+        <div className="grid grid-cols-3 items-center">
+          <div className="col-span-2 text-white">
+            <h1 className="my-1 font-prototype text-[60px] font-semibold leading-[95px]">
               The pioneer <span className="tracking-wider text-primary">NFT</span>
             </h1>
-            <h5 className="my-1 font-prototype text-[60px]  leading-[76px]">
+            <h5 className="my-1 font-prototype text-[60px] leading-[76px]">
               lending protocol in Aptos
             </h5>
             <p className="mt-2 text-[28px] font-light">
               Effortless NFT Access, Infinite Opportunities
             </p>
           </div>
-          <div className="col-span-2">
+          <div className="col-span-1">
             <img src="/bg/bubble.png" className="size-full " alt="banner" />
           </div>
         </div>
@@ -30,7 +30,7 @@ const HomePage = () => {
           <div className="flex flex-col items-center justify-center border-r-2 border-white px-4  pr-12">
             <h3 className="text-base">Total Value Locked</h3>
             <div className="mt-2 flex items-center justify-center gap-3">
-              <p className="font-prototype font-bold text-secondary">1000</p>
+              <p className="font-prototype font-bold text-secondary">$1.12M</p>
               <div className="size-8">
                 <CoinIcon />
               </div>
@@ -39,16 +39,16 @@ const HomePage = () => {
           <div className="flex flex-col items-center justify-center border-r-2 border-white px-4  pr-12">
             <h3 className="text-base">Total Volume</h3>
             <div className="mt-2 flex items-center justify-center gap-3">
-              <p className="font-prototype text-3xl font-bold text-secondary">1000</p>
+              <p className="font-prototype text-3xl font-bold text-secondary">$7.94m</p>
               <div className="size-8">
                 <CoinIcon />
               </div>
             </div>
           </div>
           <div className="flex flex-col items-center justify-center px-4">
-            <h3 className="text-base">Total Borrowed</h3>
+            <h3 className="text-base">Total Liquidity</h3>
             <div className="mt-2 flex items-center justify-center gap-3">
-              <p className="font-prototype text-3xl font-bold text-secondary">1000</p>
+              <p className="font-prototype text-3xl font-bold text-secondary">$417K</p>
               <div className="size-8">
                 <CoinIcon />
               </div>
@@ -63,11 +63,11 @@ const HomePage = () => {
         </div>
         <div className="flex flex-col items-center justify-center gap-2">
           <p className="py-2">Deposit APR</p>
-          <p className="py-2 text-secondary">3.5%</p>
+          <p className="py-2 text-secondary">5.82%</p>
         </div>
         <div className="flex flex-col items-center justify-center gap-2">
           <p className="py-2 ">Borrow APR</p>
-          <p className="py-2 text-secondary">8%</p>
+          <p className="py-2 text-secondary">9.46%</p>
         </div>
         <div className=" flex flex-col justify-center gap-2 text-black">
           <button
@@ -89,7 +89,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="py-24 text-2xl text-white">
+      <div className="mt-12  py-24 text-2xl text-white">
         <h3 className="text-center font-prototype text-[64px] font-bold text-white">
           Why Megaloandon?
         </h3>
@@ -98,7 +98,7 @@ const HomePage = () => {
           <span className="text-primary"> don&#39;t want to sell</span> your blue-chip NFTs
         </p>
 
-        <div className="px-24 py-12">
+        <div className="mt-8 px-24 py-12">
           <h4 className="text-center font-prototype text-[48px] font-bold text-primary">
             Problems
           </h4>
